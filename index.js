@@ -8,7 +8,12 @@ app.get("/", (req, res) => {
 });
 
 //Socket Logic
-const socketio = require("socket.io")(http);
+const socketio = require("socket.io")(http, {
+  allowRequest: (req, callback) => {
+    const noOriginHeader = req.headers.origin === undefined;
+    callback(null, noOriginHeader);
+  },
+});
 let users = [];
 socketio.on("connection", (userSocket) => {
   console.log("a user connected " + userSocket.id);
