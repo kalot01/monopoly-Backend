@@ -9,9 +9,11 @@ app.get("/", (req, res) => {
 
 //Socket Logic
 const socketio = require("socket.io")(http, {
-  allowRequest: (req, callback) => {
-    const noOriginHeader = req.headers.origin === undefined;
-    callback(null, noOriginHeader);
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["*"],
+    credentials: false,
   },
 });
 let users = [];
