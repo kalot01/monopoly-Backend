@@ -12,8 +12,6 @@ const socketio = require("socket.io")(http, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["*"],
-    credentials: false,
   },
 });
 let users = [];
