@@ -6,7 +6,7 @@ require("dotenv").config();
 app.get("/", (req, res) => {
   res.send("Node Server is running. Yay!!");
 });
-
+http.listen(process.env.PORT);
 //Socket Logic
 const socketio = require("socket.io")(http, {
   cors: {
@@ -23,4 +23,3 @@ socketio.on("connection", (userSocket) => {
   });
 });
 console.log("application is running on port " + process.env.PORT);
-http.listen(process.env.PORT);
